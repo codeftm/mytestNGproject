@@ -53,11 +53,47 @@ Error Message: invalid credentials
         ReusableMethods.verifyElementDisplayed(loginPage.invalidCredentialsError);
         Assert.assertTrue(loginPage.invalidCredentialsError.getText().equals("invalid credentials"));
 
-
         ReusableMethods.getScreenshot("Error Message");
         Driver.closeDriver();
 
+    }
+    /*Name:
+    Login screen error messages
+    Description:
+    User should see error message when an invalid email is entered
+    Acceptance Criteria:
+    As admin or customer, I should be able to see error message, when I do not provide a complete valid email address in email address box
+    Error Message: email must be a valid email
+    When I enter a valid email domain, then I should not see the error message
+    https://email-verify.my-addr.com/list-of-most-popular-email-domains.php
+    * */
+    @Test
+    public void invalidEmail() throws IOException {
+        //        going to the url
+        Driver.getDriver().get(ConfigReader.getProperty("app_url"));
+        //        click on login button
+        homePage = new HomePage();
+        loginPage=new LoginPage();
+        faker=new Faker();
+//        clicking home login button
+        homePage.homeLoginButton.click();
+//        typing invalid email
+        loginPage.username.sendKeys(faker.name().username());
+//      waiting for the error message and verify the error text
+        ReusableMethods.waitForVisibility(loginPage.invalidEmailError,5);
+        ReusableMethods.verifyElementDisplayed(loginPage.invalidEmailError);
+        Assert.assertTrue(loginPage.invalidEmailError.getText().equals("email must be a valid email"));
+        ReusableMethods.getScreenshot("Invalid_Email");
+//        Verifying when there is valid email, error message is gone
+        loginPage.username.sendKeys(faker.internet().emailAddress());
+//       Doing assertion
+//        verifyElementNotDisplayed -> PASS IF ELEMENT IS NOT ON THE PAGE. FAILS IF ELEMENT IS ON THE PAGE
+//ReusableMethods.verifyElementNotDisplayed(By.xpath("//*[text()-'email must be a valid email']"));
+        ReusableMethods.verifyElementNotDisplayed(loginPage.invalidEmailError);
+        ReusableMethods.getScreenshot("Valid_Email");
+        Driver.closeDriver();
+
+
 
     }
-
 }
