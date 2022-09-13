@@ -37,6 +37,9 @@ public class Day16_PositiveLogin {
         loginPage.loginButton.click();
 
 //      Verify if login is successful
+//        Verify if login is successful
+//        boolean isTrue homePage.userI0.isisplayed();
+//        Assert.assertie(14True);
         ReusableMethods.verifyElementDisplayed(homePage.userID);
 
     }
