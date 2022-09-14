@@ -17,5 +17,11 @@ public class HomePage {
     @FindBy(xpath = "//*[@name='car']")
     public WebElement selectACar;
 
+    @FindBy(linkText = "Logout")
+    public WebElement logoutLink;
+
+    @FindBy(xpath = "//button[text()='OK']")
+    public WebElement OK;
+
 
 }
