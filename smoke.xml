@@ -1,0 +1,12 @@
+
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd" >
+<suite name="Car Renter Suite" verbose="1" >
+    <test name="Smoke Test">
+        <packages>
+            <package name="techproed.tests.smoketest.login"/>
+        </packages>
+    </test>
+</suite>
+        <!--Save File After code
+        verbose: the amount of info on the console
+        The bigger verbose, the bigger information-->
